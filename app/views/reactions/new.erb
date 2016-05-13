@@ -1,0 +1,21 @@
+<div>
+<h2><%= @issue.title %></h2>
+
+<h5><%= @issue.category %></h5>
+
+<p><%= @issue.description %></p>
+
+</div>
+
+
+
+
+<form method='POST' action='/reactions'>
+  <p>On a scale of of 1-5, do you agree? (5 being strongly agree)</p>
+  <input type="number" name="agreement" min="1" max="5" id="agreement"/><br>
+  <p>Explain:</p>
+  <input type="text" name="text" id="text"/><br>
+  <input type="hidden" value="<%= current_user.id %>" name="user_id"/>
+  <input type="hidden"value="<%= params[:id] %>" name="issue_id"/>
+  <input type="submit" id="submit"/>
+</form>

@@ -19,22 +19,22 @@ ActiveRecord::Schema.define(version: 20160309002352) do
     t.string "party"
   end
 
-  create_table "policies", force: :cascade do |t|
+  create_table "issues", force: :cascade do |t|
     t.string "title"
     t.text   "description"
-    t.string "type"
+    t.string "category"
   end
 
   create_table "reactions", force: :cascade do |t|
     t.text    "text"
     t.integer "agreement"
-    t.integer "policy_id"
+    t.integer "issue_id"
     t.integer "candidate_id"
     t.integer "voter_id"
   end
 
   create_table "voters", force: :cascade do |t|
-    t.string "name"
+    t.string "username"
     t.text   "bio"
     t.string "email"
     t.string "password_digest"

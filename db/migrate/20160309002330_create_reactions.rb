@@ -3,7 +3,7 @@ class CreateReactions < ActiveRecord::Migration
     create_table :reactions do |t|
       t.text :text
       t.integer :agreement
-      t.integer :policy_id
+      t.integer :issue_id
       t.integer :candidate_id
       t.integer :voter_id
     end

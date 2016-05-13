@@ -1,0 +1,66 @@
+<h1><%= @issue.title %></h1>
+
+<h4><%= @issue.category %></h4>
+
+<p><%= @issue.description %></p>
+
+<div>
+
+  <div>
+    <h4>Candidates Supporting</h4>
+    <% @issue.candidates.each do |candidate| %>
+      <% if candidate.issues_for.include?(@issue) %>
+        <% reaction = @issue.find_reaction(candidate) %>
+        <p>
+          <%= candidate.name %> - <%= reaction.agreeance %><br>
+          <%= reaction.text %>
+        </p>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div>
+    <h4>Candidates Against</h4>
+    <% @issue.candidates.each do |candidate| %>
+      <% if candidate.issues_against.include?(@issue) %>
+        <% reaction = @issue.find_reaction(candidate) %>
+        <p>
+          <%= candidate.name %> - <%= reaction.agreeance %><br>
+          <%= reaction.text %>
+        </p>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+
+
+<div>
+  <h3>Your Stance</h3>
+  <% if current_user.issues.include?(@issue) %>
+    <% reaction = @issue.find_reaction(current_user)%>
+    <p>
+      On this issue, you <%= reaction.agreeance %>. Your reason stated was: <br> 
+      <%= reaction.text %>
+    </p>
+    <p><a href="/reactions/<%= reaction.id %>/edit">Click here</a> to reconsider your stance </p>
+  <% else %>
+    <p> You have not given an opinion on this issue. <a href="/issues/<%= @issue.id %>/addreaction">--Add your Reaction--</a><p>
+  <% end %>
+</div>
+
+
+<div>
+  <h3>Other Voters Stances on this issue:</h3>
+  <% if !@issue.voters.empty? %>
+    <% @issue.voters.each do |voter| %>
+      <% reaction = @issue.find_reaction(voter)%>
+      <% if voter.id != current_user.id %>
+        <p>
+          On this issue, user <a href="/voters/<%= voter.id %>"><%= voter.username %></a> <%= reaction.agreeance %>s. The reason stated was: <br> 
+          <%= reaction.text %>
+        </p>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

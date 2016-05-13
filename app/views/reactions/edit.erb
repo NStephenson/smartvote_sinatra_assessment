@@ -1,0 +1,22 @@
+<div>
+<h2><%= @reaction.issue.title %></h2>
+
+<h5><%= @reaction.issue.category %></h5>
+
+<p><%= @reaction.issue.description %></p>
+
+</div>
+
+
+
+
+<form method='POST' action='/reactions/<%= @reaction.id %>'>
+  <input type="hidden" id="hidden" name="_method" value="PATCH">
+  <p>On a scale of of 1-5, do you agree? (5 being strongly agree)</p>
+  <input type="number" name="agreement" min="1" max="5" id="agreement" value="<%= @reaction.agreement %>"/><br>
+  <p>Explain:</p>
+  <input type="text" name="text" id="text" value="<%= @reaction.text %>"/><br>
+  <input type="hidden" value="<%= current_user.id %>" name="user_id"/>
+  <input type="hidden"value="<%= @reaction.issue.id %>" name="issue_id"/>
+  <input type="submit" id="submit"/>
+</form>

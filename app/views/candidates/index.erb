@@ -1,0 +1,5 @@
+<h1>2016 Primary Candidates</h1>
+
+<% @candidates.each do |candidate| %>
+  <h2> <a href="/candidates/<%= candidate.id %>"><%= candidate.name %></a> - <%= candidate.party %></h2>
+<% end %>

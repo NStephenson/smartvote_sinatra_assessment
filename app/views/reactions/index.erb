@@ -1,0 +1,14 @@
+<% @reactions.each do |reaction| %>
+  <div>
+    <% if reaction.voter %>
+      <h2><%= reaction.voter.username.capitalize %></h2>
+    <% elsif reaction.candidate %>
+      <h2>Candidate <%= reaction.candidate.name %></h2>
+    <% end %>
+    <p>Reacted to:</p>
+    <h2><%= reaction.issue.title %></h2>
+    <p>With:</p>
+    <h3><a href="/reactions/<%= reaction.id %>"><%= reaction.agreeance %></a></h3>
+    <p><%= reaction.text %></p>
+  </div>
+<% end %>
