@@ -1,0 +1,9 @@
+<h1><%= @candidate.name %> - <%= @candidate.party %></h1>
+<h3><%= @candidate.title%></h3>
+
+<% @candidate.reactions.each do |reaction| %>
+  <h2><%= reaction.issue.title %> - <%= reaction.agreeance %> </h2>
+    <p><%= reaction.text %></p>
+<% end %>
+
+

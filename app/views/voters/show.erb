@@ -1,0 +1,11 @@
+<h1><%= @voter.username %></h1>
+
+<% @voter.reactions.each do |reaction| %>
+  <h2><%= reaction.issue.title %> - <%= reaction.agreeance %> </h2>
+  <p><%= reaction.text %></p>
+  <% if current_user.id == @voter.id %>
+    <p><a href="/reactions/<%= reaction.id %>/edit">Click here</a> to reconsider your stance </p>
+  <% end %>
+
+<% end %>
+

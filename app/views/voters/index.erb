@@ -1,0 +1,7 @@
+<h2>See the views of your fellow voters!!</h2>
+
+<% @voters.each do |voter| %>
+  <% if voter.id != current_user.id %>
+    <h1><a href="/voters/<%= voter.id %>"><%= voter.username%></a></h1>
+  <% end %>
+<% end %>

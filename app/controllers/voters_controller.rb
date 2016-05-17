@@ -1,7 +1,13 @@
 class VotersController < ApplicationController
 
   get '/voters' do
+    @voters = Voter.all
     erb :'voters/index'
+  end
+
+  get '/voters/:id' do
+    @voter = Voter.find(params[:id])
+    erb :'voters/show'
   end
 
   get '/signup' do
@@ -41,6 +47,11 @@ class VotersController < ApplicationController
       session[:id] = voter.id
     end
     redirect "/reactions"
+  end
+
+  get '/logout' do
+    session.clear
+    redirect '/'
   end
 
 
