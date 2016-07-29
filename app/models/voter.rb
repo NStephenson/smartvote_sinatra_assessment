@@ -6,5 +6,11 @@ class Voter < ActiveRecord::Base
 
   has_secure_password
 
+  def best_candidate
+    reactions.each do |reaction|
+      
+    end
+  end
+
 
 end

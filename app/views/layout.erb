@@ -5,17 +5,15 @@
 <body>
   <ul>
     <% if logged_in? %>
-      <li>Hello <%= current_user.username %>!
+      <li>Hello <a href="/voters/<%= current_user.id%>"><%= current_user.username %></a>!
       <li><a href="/candidates">Candidates</a>
       <li><a href="/voters">Voters</a>
       <li><a href="/issues">Issues</a>
+      <li><a href="/reactions">Reactions</a>
       <li><a href="/logout">Log out</a>
     <% else %>
       <li><a href="/login">Login</a>
       <li><a href="/signup">Sign up</a>
-      <li><a href="/candidates">Candidates</a>
-      <li><a href="/voters">Voters</a>
-      <li><a href="/issues">Issues</a>
     <% end %>
 
   </ul>

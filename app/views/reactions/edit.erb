@@ -20,3 +20,8 @@
   <input type="hidden"value="<%= @reaction.issue.id %>" name="issue_id"/>
   <input type="submit" id="submit"/>
 </form>
+
+<form action="/reactions/<%= @reaction.id %>" method="post">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Your Stance">
+</form>

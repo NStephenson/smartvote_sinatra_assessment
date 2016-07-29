@@ -62,4 +62,17 @@ class ReactionsController < ApplicationController
     redirect "/reactions/#{params[:id]}/edit"
   end
 
+  delete '/reactions/:id' do
+    @reaction = Reaction.find(params[:id])
+
+    if @reaction.voter.id == current_user.id
+      @reaction.delete
+      flash[:message] = "You've successfully deleted your position"
+      redirect "/reactions"
+    else
+      flash[:message] = "You can't do that! That's not even your reaction!"
+      redirect "/reactions"
+    end
+  end
+
 end

@@ -27,5 +27,9 @@ class Issue < ActiveRecord::Base
     end
   end
 
+  def candidate_reactions
+    reactions.select { |reaction| reaction.candidate }
+  end
+
 
 end
