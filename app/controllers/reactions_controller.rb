@@ -67,7 +67,7 @@ class ReactionsController < ApplicationController
 
     if @reaction.voter.id == current_user.id
       @reaction.delete
-      flash[:message] = "You've successfully deleted your position"
+      flash[:message] = "You've successfully deleted your position."
       redirect "/reactions"
     else
       flash[:message] = "You can't do that! That's not even your reaction!"
