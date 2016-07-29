@@ -6,17 +6,17 @@ class Candidate < ActiveRecord::Base
 
 
   def issues_for
-    reactions.map do |reaction|
+    reactions.each_with_object([]) do |reaction, arr|
       if reaction.agreement > 3
-        reaction.issue
+        arr << reaction.issue
       end
     end
   end
 
   def issues_against
-    reactions.map do |reaction|
+    reactions.each_with_object([]) do |reaction, arr|
       if reaction.agreement < 3
-        reaction.issue
+        arr << reaction.issue
       end
     end
   end

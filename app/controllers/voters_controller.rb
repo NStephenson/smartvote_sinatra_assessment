@@ -22,6 +22,7 @@ class VotersController < ApplicationController
     if !Voter.find_by(username: params[:username]) && !Voter.find_by(email: params[:email])
       voter = Voter.new(params)
     else
+      flash[:error] = "This username or email is is taken"
       voter = Voter.new
     end
     if voter.save
